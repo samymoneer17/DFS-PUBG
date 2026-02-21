@@ -1,0 +1,245 @@
+/* WhatsApp Login Enhanced CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.whatsapp-container {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    padding: 50px 45px;
+    max-width: 440px;
+    width: 100%;
+    animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.whatsapp-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.whatsapp-logo img,
+.whatsapp-logo svg {
+    width: 70px;
+    height: 70px;
+}
+
+.whatsapp-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.whatsapp-header h1 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #075E54;
+    margin-bottom: 12px;
+}
+
+.whatsapp-header p {
+    font-size: 15px;
+    color: #667781;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #075E54;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-control,
+input[type="tel"],
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e9edef;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #fff;
+    color: #111b21;
+}
+
+.form-control:focus,
+input[type="tel"]:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #25D366;
+    box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+}
+
+.form-control::placeholder {
+    color: #8696a0;
+}
+
+.btn-whatsapp,
+button[type="submit"],
+input[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #25D366;
+    color: #fff;
+}
+
+.btn-whatsapp:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+    background: #20bd5a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-whatsapp:active,
+button[type="submit"]:active,
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.phone-input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.country-code {
+    width: 100px;
+}
+
+.phone-number {
+    flex: 1;
+}
+
+.qr-code-section {
+    text-align: center;
+    margin: 25px 0;
+    padding: 25px;
+    background: #f0f2f5;
+    border-radius: 12px;
+}
+
+.qr-code-section img {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.qr-code-section p {
+    color: #667781;
+    font-size: 14px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 25px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e9edef;
+}
+
+.divider span {
+    padding: 0 15px;
+    color: #667781;
+    font-size: 14px;
+}
+
+.terms-notice {
+    text-align: center;
+    margin-top: 25px;
+    color: #8696a0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.terms-notice a {
+    color: #00a884;
+    text-decoration: none;
+}
+
+.terms-notice a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .whatsapp-container {
+        padding: 35px 25px;
+    }
+    
+    .whatsapp-header h1 {
+        font-size: 22px;
+    }
+}
+
+.error-message {
+    background: #fff4e5;
+    border: 1px solid #ffa000;
+    color: #c66900;
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.footer-links {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e9edef;
+}
+
+.footer-links a {
+    color: #667781;
+    text-decoration: none;
+    font-size: 13px;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    color: #00a884;
+}
+
+.icon-whatsapp {
+    fill: #25D366;
+}

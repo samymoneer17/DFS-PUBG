@@ -1,0 +1,354 @@
+.header-twitter {
+    background: #fff;
+    width: 95%;
+	height: 20px;
+	padding: 8px;	
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 1px solid #E5EAED;
+    margin-bottom: 20px;
+	position: relative;	
+}
+.header-twitter img {
+    width: 20px;
+    height: 20px;
+    float:left;    
+    display: block;
+    margin-top:1px;
+    margin-left:2px;
+    margin-right:-10px;    
+}
+.header-twitter-text {
+    color: #000;
+	font-size: 15px;
+	font-weight: 500;
+    font-family: arial, sans-serif;
+	text-align: center;
+	margin-top:2px;
+	padding-left:-2px;
+}
+.txt-login-twitter {
+	padding-top: 1px;
+	padding-left: 2px;	
+    color: #000;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: arial, sans-serif;	
+    margin-bottom: 3%;
+}
+.content-box-twitter {
+    width: 90%;
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 25px;
+	display: block;
+}
+.content-box-twitter-txt {
+    width: auto;
+    height: auto;        
+    display: inline-block;
+	margin-left: auto;
+	margin-right: 10px;	
+	padding-bottom: 10px;
+	display: block;
+}
+.content-box-twitter-txt img {
+	width: 55px;
+	border:none;
+	border-radius: 12px;
+	margin-top: 10px;
+	margin-left: 5px;	
+	margin-right: 10px;		
+	float: left;
+}
+.content-box-twitter p {
+	background: #666666;	
+	height: 35px;
+    border-radius:10px;    
+	color: #fff;	
+	padding-top:5px;	
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+	float:center;
+	text-align: center;	
+}
+.content-box-twitter label {
+	color: #000;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+	float: left;
+	text-shadow: none;
+}
+.content-box-twitter label a {
+	color: #1da1f2;
+}
+.content-box-twitter-txt-title {
+	color: #6A747E;
+	font-size: 16px;
+	padding-top: 11px;
+	padding-bottom: 7px;
+	font-family: Arial, sans-serif;
+	font-weight: 300;
+	text-align: left;	
+}
+.content-box-twitter-txt-det {   
+	width: auto;
+	height: auto;
+	padding-top: 2px;	
+	padding-bottom: 3px;
+	color: #8799A3;
+	font-size: 11px;
+	font-family: Arial, sans-serif;
+	text-align: left;
+	text-shadow:none;	
+}
+.alert-twitter-failed {                        	    
+    background: #62656C;
+    width: auto;
+	height: 34px;
+	padding: 5px;
+	padding-top:10px;		    
+    margin-bottom: 10px;
+	position: relative;
+	display:none;
+	border-radius:5px;
+}
+.alert-twitter {                    
+    width: auto;	
+	height: auto;		
+	padding-top:0px;		
+    text-align:left;
+    border-radius:5px;
+    color: #fff;		    
+    font-size: 14px;
+    float:center;
+    margin-bottom:-10px;   	
+	font-family: Arial, sans-serif;				
+}
+.alert-twitter img {    
+    background: #fff;    
+    width: 24px; 
+    float:left; 
+    margin-right:1px;
+    margin-left:2px;
+    border-radius: 5px;
+    margin-top:-5px;
+    display: inline-block;	
+}
+.alert-twitter-faileds { 
+    background: #62656C;
+    width: auto;
+	height: auto;
+	padding: 5px;	    
+    margin-bottom: 10px;
+	position: relative;
+	display:none;
+	border-radius:5px;
+}
+.alert-twitters {                        
+    width: auto;	
+	height: auto;		
+	padding:0px;		
+    text-align:left;
+    border-radius:5px;
+    color: #fff;		    
+    font-size: 13px;
+    float:center;
+    margin-bottom:-10px;   	
+	font-family: Arial, sans-serif;				
+}
+.alert-twitters img {    
+    background: #fff;    
+    width: 24px; 
+    float:left;
+    margin-right:1px;
+    margin-left:2px;
+	margin-top: 3px;
+    border-radius: 5px;    
+    display: inline-block;	
+}
+.onbutton {
+    background: #666666;
+    width: 100%;
+    height: auto;
+	margin-top: 5px;
+	margin-left: -1px;
+	margin-bottom: 20px;
+    padding: 14px;
+    color: #C2C2C2;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    letter-spacing: 1;
+}
+.twbutton {
+    background: #000;
+    width: 100%;
+    height: auto;
+	margin-top: 5px;
+	margin-left: -1px;
+	margin-bottom: 20px;
+    padding: 14px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    letter-spacing: 1;
+}
+.seconbutton {
+    background: #666666;
+    width: 100%;
+    height: auto;
+	margin-top: 5px;
+	margin-left: -1px;
+	margin-bottom: 20px;
+    padding: 14px;
+    color: #C2C2C2;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    letter-spacing: 1;
+}
+.sectwbutton {
+    background: #000;
+    width: 100%;
+    height: auto;
+	margin-top: 5px;
+	margin-left: -1px;
+	margin-bottom: 20px;
+    padding: 14px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    letter-spacing: 1;
+}
+.content-box-twitter-txt-footer {
+    width: auto;
+    height: auto;        
+    display: inline-block;	
+	color: #848586;
+	font-size:11px;	
+    font-family: Arial, sans-serif;
+	margin-right: 10px;	
+	text-align:left;
+	padding-bottom: 10px;
+	display: block;
+}
+.content-box-twitter-txt-footer a {    
+    color: #3D86BD;    
+}
+.content-box-twitter-txt-footers {
+    width: auto;
+    height: auto;        
+    display: inline-block;	
+	color: #848586;
+	font-size:10.5px;	
+    font-family: Arial, sans-serif;
+	margin-right: 10px;	
+	text-align:left;
+	padding-bottom: 10px;
+	display: block;
+}
+.content-box-twitter-txt-footers a {    
+    color: #3D86BD;    
+}
+.content-box-twitter-txt-footer-left {
+    width: auto;
+    height: auto; 
+    padding-right:25%;  
+    display: inline-block;	
+	color: #000;
+	font-size:9px;
+	font-weight: bold;
+    font-family: Arial, sans-serif;
+	margin-right: 10px;	
+	text-align:left;
+	padding-bottom: 10px;
+	display: block;
+}
+.img {
+    width: 55px;        
+    float:left;
+    display: inline-block;
+}
+.content-box-twitter-txt label {
+    color: #90949c;
+    font-size: 16px;
+    font-family: Roboto, sans-serif;
+    text-align: left;
+    display: inline-block;
+}
+.form-group-twitter {
+	width: 93%;
+	max-width: 100%;
+	margin-left: -1px;
+	margin-right: auto;
+	padding: 10px 0;
+	position: relative;
+	display: block;
+}
+.form-group-twitter input {
+	background: transparent;
+	width: 100%;
+	padding: 16px;
+	padding-top: 25px;
+	padding-bottom: 5px;
+	padding-left: 7px;  
+	color: #000;
+	font-size: 17px;
+	font-family: Arial, sans-serif;
+	border: 1px solid #657786;
+	border-radius: 3.5px;
+	display: block;
+}
+.form-group-twitter label {
+	color: #6E767D;
+	font-size: 17px;
+	font-weight: 100;
+	font-family: Arial, sans-serif;
+	text-align: right;
+	top: 0;
+	left: 10.5px;
+	position: absolute;
+	pointer-events: none;
+	transform: translateY(26px);
+	transition: all 0.2s ease-in-out;
+}
+.form-group-twitter input:valid,.form-group-twitter input:focus {
+	border: 2px solid #1da1f2;
+	outline: none;
+}
+.form-group-twitter input:valid+label,.form-group-twitter input:focus+label {
+	color: #1da1f2;
+	font-size: 12px;
+	top: 15px;
+	bottom: 20px;
+	transform: translateY(0);
+}
+.form-group-sohi {
+	width: 50px;
+	height: 73%;
+	margin-left: 95%;
+	position: absolute;
+	z-index: 9999999;
+	cursor: pointer;
+}
+.form-group-sohi img {
+	width: 23px;
+	opacity: 0.6;
+	margin-top: 16px;
+}

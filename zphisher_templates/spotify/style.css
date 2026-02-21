@@ -1,0 +1,249 @@
+/* Spotify Login Enhanced CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Circular', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: linear-gradient(135deg, #1db954 0%, #191414 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.spotify-container {
+    background: #121212;
+    border-radius: 16px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    padding: 50px 45px;
+    max-width: 460px;
+    width: 100%;
+    animation: slideInFade 0.6s ease;
+}
+
+@keyframes slideInFade {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.spotify-logo {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.spotify-logo img,
+.spotify-logo svg {
+    max-width: 80px;
+    height: auto;
+}
+
+.spotify-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.spotify-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.spotify-header p {
+    font-size: 15px;
+    color: #b3b3b3;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.form-control,
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #727272;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #121212;
+    color: #fff;
+}
+
+.form-control:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
+    outline: none;
+    border-color: #1db954;
+    box-shadow: 0 0 0 3px rgba(29, 185, 84, 0.2);
+}
+
+.form-control::placeholder {
+    color: #727272;
+}
+
+.btn-spotify,
+button[type="submit"],
+input[type="submit"] {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 500px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #1db954;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-spotify:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+    background: #1ed760;
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(29, 185, 84, 0.5);
+}
+
+.btn-spotify:active,
+button[type="submit"]:active,
+input[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.remember-forgot label {
+    display: flex;
+    align-items: center;
+    color: #b3b3b3;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.remember-forgot input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.remember-forgot a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.remember-forgot a:hover {
+    color: #1db954;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #727272;
+}
+
+.divider span {
+    padding: 0 15px;
+    color: #b3b3b3;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 35px;
+    padding-top: 30px;
+    border-top: 1px solid #727272;
+}
+
+.signup-link p {
+    color: #b3b3b3;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.signup-link a {
+    color: #1db954;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .spotify-container {
+        padding: 40px 30px;
+    }
+    
+    .spotify-header h1 {
+        font-size: 26px;
+    }
+}
+
+.error-message {
+    background: #e22134;
+    color: #fff;
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.footer-links {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.footer-links a {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    color: #1db954;
+}

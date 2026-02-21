@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - YouTube</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: white;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 48px 40px 36px;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 1px 3px rgba(60, 64, 67, 0.1);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .youtube-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .youtube-icon {
+            width: 42px;
+            height: 30px;
+            background: #FF0033;
+            border-radius: 4px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .youtube-icon::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 10px solid white;
+            margin-left: 2px;
+        }
+
+        .youtube-text {
+            font-size: 28px;
+            font-weight: 500;
+            color: #212121;
+            letter-spacing: -1px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            color: #202124;
+            margin: 16px 0;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #5f6368;
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #5f6368;
+            margin-bottom: 8px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #FF0033;
+            border-width: 2px;
+            padding: 12px 14px;
+        }
+
+        .forgot-password {
+            text-align: left;
+            margin-top: -16px;
+            margin-bottom: 24px;
+        }
+
+        .forgot-password a {
+            color: #1a73e8;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 32px;
+        }
+
+        .create-account {
+            color: #1a73e8;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .create-account:hover {
+            text-decoration: underline;
+        }
+
+        .next-btn {
+            background: #FF0033;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .next-btn:hover {
+            background: #d60029;
+            box-shadow: 0 1px 3px rgba(255, 0, 51, 0.3);
+        }
+
+        .next-btn:active {
+            background: #b30022;
+        }
+
+        .footer-links {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #dadce0;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        .footer-links a {
+            color: #5f6368;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #202124;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 32px 24px;
+                border: none;
+                box-shadow: none;
+            }
+
+            .buttons {
+                flex-direction: column-reverse;
+                gap: 16px;
+                align-items: stretch;
+            }
+
+            .next-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-container">
+            <div class="youtube-logo">
+                <div class="youtube-icon"></div>
+                <span class="youtube-text">YouTube</span>
+            </div>
+        </div>
+
+        <h1>Sign in</h1>
+        <p class="subtitle">to continue to YouTube</p>
+
+        <form method="POST" action="">
+            <div class="input-group">
+                <label for="email">Email or phone</label>
+                <input type="email" id="email" name="username" placeholder="Enter your email" required autocomplete="email">
+            </div>
+
+            <div class="input-group">
+                <label for="password">Enter your password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+            </div>
+
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <div class="buttons">
+                <a href="#" class="create-account">Create account</a>
+                <button type="submit" class="next-btn">Next</button>
+            </div>
+        </form>
+
+        <div class="footer-links">
+            <a href="#">Help</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+        </div>
+    </div>
+</body>
+</html>

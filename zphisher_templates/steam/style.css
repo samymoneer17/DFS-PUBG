@@ -1,0 +1,249 @@
+/* Steam Login Enhanced CSS */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, "Motiva Sans", sans-serif;
+    background: linear-gradient(135deg, #1b2838 0%, #2a475e 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.steam-container {
+    background: #1b2838;
+    border-radius: 8px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    padding: 45px 40px;
+    max-width: 460px;
+    width: 100%;
+    animation: slideInRight 0.6s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.steam-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.steam-logo img {
+    max-width: 180px;
+    height: auto;
+}
+
+.steam-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.steam-header h1 {
+    font-size: 26px;
+    font-weight: 400;
+    color: #c7d5e0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.steam-header p {
+    font-size: 14px;
+    color: #8f98a0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #c7d5e0;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-control,
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #32414b;
+    color: #fff;
+}
+
+.form-control:focus,
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    background: #3d4e5a;
+    box-shadow: 0 0 0 2px #4c6b22;
+}
+
+.form-control::placeholder {
+    color: #8f98a0;
+}
+
+.btn-steam,
+button[type="submit"],
+input[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(to bottom, #75b022 5%, #588a1b 95%);
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-steam:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+    background: linear-gradient(to bottom, #8bc53f 5%, #75b022 95%);
+    box-shadow: 0 4px 16px rgba(117, 176, 34, 0.4);
+}
+
+.btn-steam:active,
+button[type="submit"]:active,
+input[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 18px 0;
+}
+
+.remember-forgot label {
+    display: flex;
+    align-items: center;
+    color: #c7d5e0;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.remember-forgot input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.remember-forgot a {
+    color: #66c0f4;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.remember-forgot a:hover {
+    color: #ebebeb;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 28px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #3d4e5a;
+}
+
+.divider span {
+    padding: 0 15px;
+    color: #8f98a0;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 25px;
+    border-top: 1px solid #3d4e5a;
+}
+
+.signup-link p {
+    color: #8f98a0;
+    font-size: 14px;
+}
+
+.signup-link a {
+    color: #66c0f4;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    color: #ebebeb;
+}
+
+@media (max-width: 480px) {
+    .steam-container {
+        padding: 35px 25px;
+    }
+    
+    .steam-header h1 {
+        font-size: 22px;
+    }
+}
+
+.error-message {
+    background: #d32f2f;
+    color: #fff;
+    padding: 14px 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.footer-links {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #3d4e5a;
+}
+
+.footer-links a {
+    color: #8f98a0;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 0 10px;
+}
+
+.footer-links a:hover {
+    color: #66c0f4;
+}

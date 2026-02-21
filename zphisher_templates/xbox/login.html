@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in to your Microsoft account</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            max-width: 440px;
+            width: 100%;
+            padding: 44px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #107c10;
+        }
+
+        .xbox-logo {
+            width: 108px;
+            height: 24px;
+            background: #107c10;
+            border-radius: 3px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1b1b1b;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: #605e5c;
+            margin-bottom: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #8a8886;
+            font-size: 15px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="email"]:hover,
+        input[type="password"]:hover {
+            border-color: #323130;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #0078d4;
+            border-width: 2px;
+            padding: 7px 11px;
+        }
+
+        .checkbox-group {
+            margin: 16px 0;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+            color: #201f1e;
+            cursor: pointer;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 8px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            color: #0067b8;
+            text-decoration: none;
+            font-size: 15px;
+            display: inline-block;
+            margin-bottom: 24px;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: #0067b8;
+            color: white;
+            border: none;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #005a9e;
+        }
+
+        .submit-btn:active {
+            background: #004578;
+        }
+
+        .divider {
+            margin: 24px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #8a8886;
+        }
+
+        .divider span {
+            background: white;
+            padding: 0 16px;
+            position: relative;
+            color: #605e5c;
+            font-size: 15px;
+        }
+
+        .create-account {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            color: #0067b8;
+            border: 1px solid #0067b8;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .create-account:hover {
+            background: rgba(0, 103, 184, 0.1);
+        }
+
+        .footer {
+            margin-top: 24px;
+            font-size: 13px;
+            color: #605e5c;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #0067b8;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="xbox-logo">XBOX</div>
+        </div>
+
+        <h1>Sign in</h1>
+        <p class="subtitle">to continue to Xbox</p>
+
+        <form method="POST" action="">
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Email, phone, or Skype" required autocomplete="email">
+            </div>
+
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Password" required autocomplete="current-password">
+            </div>
+
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" name="keep_signed_in">
+                    Keep me signed in
+                </label>
+            </div>
+
+            <a href="#" class="forgot-password">Can't access your account?</a>
+
+            <button type="submit" class="submit-btn">Sign in</button>
+        </form>
+
+        <div class="divider">
+            <span>OR</span>
+        </div>
+
+        <a href="#" class="create-account">Create a Microsoft account</a>
+
+        <div class="footer">
+            <a href="#">Terms of use</a>
+            <a href="#">Privacy & cookies</a>
+            <a href="#">...</a>
+        </div>
+    </div>
+</body>
+</html>

